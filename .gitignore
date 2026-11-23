@@ -1,0 +1,14 @@
+# Build output
+/target/
+/dist/
+
+# Local build settings (this one points the build output somewhere on one PC)
+/.cargo/config.toml
+
+# Private developer notes
+/CLAUDE.md
+/HANDOFF.md
+
+# Test leftovers
+*.bmp
+*.mp4

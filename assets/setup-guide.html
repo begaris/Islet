@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Islet – nustatymų gidas</title>
+<style>
+  :root {
+    --bg: #f6f6f8; --card: #ffffff; --text: #17171c; --muted: #5d5d6b; --line: #e3e3ea;
+    --accent: #6c63ff; --accent-soft: #ecebff; --ok: #1f9d55; --ok-soft: #e6f6ec; --warn: #b26a00; --warn-soft: #fff4e0;
+    --code: #f0f0f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e0e12; --card: #18181e; --text: #ececf2; --muted: #a0a0b0; --line: #2a2a33;
+      --accent: #8f88ff; --accent-soft: #23223a; --ok: #4cd18a; --ok-soft: #14271c; --warn: #ffb547; --warn-soft: #2b2212;
+      --code: #22222a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.02em; }
+  h2 { font-size: 22px; margin: 44px 0 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 18px; margin: 26px 0 8px; }
+  p, li { color: var(--text); }
+  .lead { color: var(--muted); font-size: 17px; margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 14px 0; }
+  .free { background: var(--ok-soft); border-color: transparent; }
+  .note { background: var(--warn-soft); border-color: transparent; }
+  .tip { background: var(--accent-soft); border-color: transparent; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; margin-left: 6px; vertical-align: 2px; }
+  .tag.ok { background: var(--ok-soft); color: var(--ok); }
+  .tag.pay { background: var(--warn-soft); color: var(--warn); }
+  code, kbd { background: var(--code); border-radius: 6px; padding: 1px 6px; font: 14px Consolas, "Cascadia Mono", monospace; }
+  kbd { border: 1px solid var(--line); }
+  ol, ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 8px; }
+  nav a { text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 5px 13px; font-size: 14px; color: var(--text); }
+  .path { font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<h1>Islet nustatymų gidas</h1>
+<p class="lead">Kaip įjungti orus, valiutas, AI pokalbį ir balsą į tekstą. Visi nustatymai yra programoje: salos skydelyje paspauskite slankiklių ikoną (dešinėje viršuje) ir slinkite iki <b>Network</b>. Pakeitimai įsigalioja iškart.</p>
+
+<nav>
+  <a href="#nemokamai">Kas veikia be rakto</a>
+  <a href="#chat">AI pokalbis</a>
+  <a href="#balsas">Balsas į tekstą</a>
+  <a href="#orai">Orai</a>
+  <a href="#valiutos">Valiutos</a>
+  <a href="#kintamieji">Raktai sistemoje</a>
+  <a href="#atnaujinimai">Atnaujinimai</a>
+  <a href="#privatumas">Kas kur siunčiama</a>
+  <a href="#problemos">Jei kas neveikia</a>
+</nav>
+
+<h2 id="nemokamai">Kas veikia be jokio rakto</h2>
+<div class="card free">
+  <ul>
+    <li><b>Orai</b>: nemokama, be paskyros. Tik įjunkite ir įrašykite miestą.</li>
+    <li><b>Valiutų skaičiuoklė</b>: nemokama, be paskyros (Europos centrinio banko kursai).</li>
+    <li><b>Balsas į tekstą „On this PC“</b>: nemokama, veikia be interneto (tik anglų kalba).</li>
+    <li><b>AI pokalbis per „Claude login“ arba „ChatGPT login“</b>: naudoja jūsų esamą Claude ar ChatGPT prenumeratą, papildomai nieko nemokate. Reikia tik vieną kartą prisijungti.</li>
+  </ul>
+</div>
+
+<h2 id="chat">AI pokalbis (Chat skirtukas)</h2>
+<p>Pirmiausia <span class="path">Settings › Network › AI chat</span> įjunkite. Tada pasirinkite <b>Chat provider</b>: vieną iš būdų žemiau.</p>
+
+<h3>A. Claude login: jūsų Claude paskyra <span class="tag ok">Rekomenduojama</span></h3>
+<div class="card">
+  <p>Tinka, jei kompiuteryje yra <b>Claude programa</b> ir turite Claude Pro arba Max planą. Islet naudoja kartu su Claude programa įdiegtą Claude Code, todėl API rakto nereikia.</p>
+  <ol>
+    <li><span class="path">Chat provider</span> pasirinkite <b>Claude login</b>.</li>
+    <li>Eilutėje <span class="path">Claude login</span> paspauskite <b>Sign in</b>. Atsidarys juodas langas ir naršyklė.</li>
+    <li>Naršyklėje prisijunkite savo Claude paskyra ir patvirtinkite (<i>Authorize</i>).</li>
+    <li>Grįžkite į Islet: po kelių sekundžių eilutėje atsiras <b>Signed in ✓</b>. Juodą langą galite uždaryti.</li>
+    <li>Atidarykite <b>Chat</b> skirtuką ir rašykite.</li>
+  </ol>
+  <p><b>Ką verta žinoti:</b></p>
+  <ul>
+    <li>Atsakymai skaičiuojami į jūsų Claude plano limitus (tie patys, kaip naudojant Claude programą).</li>
+    <li>Pirmas žodis pasirodo po maždaug 2–4 sekundžių: kiekvienam atsakymui fone paleidžiamas Claude Code.</li>
+    <li>Claude čia tik kalbasi: jis negali nieko daryti jūsų kompiuteryje (visi įrankiai išjungti).</li>
+    <li>PDF, Word, Excel ir tekstinių failų turinį siųsti galima. <b>Paveikslėlių</b> šiuo būdu siųsti nepavyks: jiems reikia B arba C būdo.</li>
+    <li>Modelį galima pasirinkti lauke <span class="path">Chat model</span> (pvz. <code>sonnet</code> arba <code>opus</code>). Tuščias laukas reiškia jūsų plano numatytąjį modelį.</li>
+  </ul>
+  <p>Jei rodo <b>„Claude app not found“</b>, įdiekite Claude programą iš <a href="https://claude.ai/download">claude.ai/download</a>.</p>
+</div>
+
+<h3>A2. ChatGPT login: jūsų ChatGPT paskyra <span class="tag ok">Be rakto</span></h3>
+<div class="card">
+  <p>Tas pats principas, tik su OpenAI: tinka, jei kompiuteryje yra <b>Codex programa</b> (OpenAI) ir turite ChatGPT planą (Plus, Pro ir pan.). Islet naudoja jos įdiegtą Codex.</p>
+  <ol>
+    <li><span class="path">Chat provider</span> pasirinkite <b>ChatGPT login</b>.</li>
+    <li>Eilutėje <span class="path">ChatGPT login</span> paspauskite <b>Sign in</b> ir prisijunkite naršyklėje savo ChatGPT paskyra (jei Codex programoje jau esate prisijungę, matysite <b>Signed in ✓</b> iškart).</li>
+    <li>Atidarykite <b>Chat</b> skirtuką ir rašykite.</li>
+  </ol>
+  <ul>
+    <li>Atsakymai skaičiuojami į jūsų ChatGPT plano limitus.</li>
+    <li>Atsakymas pasirodo visas iš karto (ne po žodį), maždaug po 5–10 sekundžių.</li>
+    <li>Paveikslėlius siųsti <b>galima</b>.</li>
+    <li>Codex veikia tik skaitymo režimu ir yra paprašytas nieko nedaryti kompiuteryje, tik atsakyti.</li>
+    <li>Jei <b>Codex programos</b> neturite, ją rasite OpenAI svetainėje (ieškokite „Codex app“).</li>
+  </ul>
+</div>
+
+<h3>Modelio pasirinkimas</h3>
+<div class="card tip">
+  <ul>
+    <li><span class="path">Settings › Network › Model</span>: rodyklėmis ‹ › perjunkite modelius. Sąrašas priklauso nuo tiekėjo: Claude login: Opus / Sonnet / Haiku; ChatGPT login: modeliai iš jūsų Codex; Anthropic API: Opus 5.5 / Sonnet 5.5 / Haiku 5.5; OpenAI-compatible: sąrašas gaunamas iš paties serverio.</li>
+    <li>Greičiau: <b>Chat</b> skirtuko viršuje kairėje paspauskite modelio pavadinimą (pvz. „Claude · Sonnet ›“), ir bus parinktas kitas modelis.</li>
+    <li>Modelio, kurio sąraše nėra, pavadinimą galite įrašyti į <span class="path">Other model</span>.</li>
+  </ul>
+</div>
+
+<h3>Pokalbiai Claude Code ir Codex programose</h3>
+<div class="card">
+  <p>Naudojant <b>Claude login</b> arba <b>ChatGPT login</b>, kiekvienas Islet pokalbis išsaugomas ir pačiame Claude Code / Codex (aplanke <code>C:\Users\&lt;jūs&gt;\Islet Chat</code>). Todėl:</p>
+  <ul>
+    <li>Claude / ChatGPT tikrai prisimena visą pokalbį, o ne jo santrauką.</li>
+    <li><b>Chat</b> skirtuko viršuje dešinėje atsiranda mygtukas <b>Open in Claude Code</b> (arba <b>Open in Codex</b>). Jis atidaro tą patį pokalbį atskirame lange: jį matote ir galite tęsti ten.</li>
+    <li>Pokalbį taip pat rasite paleidę <code>claude --resume</code> (arba <code>codex resume</code>) aplanke „Islet Chat“. Claude pavadina jį „Islet: …“ pagal pirmus žodžius.</li>
+    <li><b>+</b> mygtukas Chat skirtuke pradeda naują pokalbį (senasis lieka Claude Code / Codex istorijoje).</li>
+  </ul>
+  <p class="note card" style="margin:10px 0 0">Į įprastą <b>claude.ai</b> ar <b>chatgpt.com</b> pokalbių sąrašą (ir Claude programos šoninę juostą) kitos programos pokalbių įrašyti negali. Patikrinau: šios istorijos niekas išorėje papildyti neleidžia. Todėl pokalbis atidaromas Claude Code / Codex lange.</p>
+</div>
+
+<h3>B. Anthropic API raktas <span class="tag pay">Mokama pagal naudojimą</span></h3>
+<div class="card">
+  <p>Atskira paslauga programuotojams: mokate už kiekvieną atsakymą, nepriklausomai nuo Claude Pro prenumeratos (tai dvi skirtingos sąskaitos).</p>
+  <ol>
+    <li>Eikite į <a href="https://console.anthropic.com">console.anthropic.com</a> ir susikurkite paskyrą (galite prisijungti tuo pačiu el. paštu).</li>
+    <li><span class="path">Settings › Billing</span>: įneškite kreditą (pakanka kelių dolerių; trumpas pokalbis kainuoja centų dalis).</li>
+    <li><span class="path">Settings › API keys › Create key</span>: duokite pavadinimą (pvz. „Islet“) ir <b>nukopijuokite raktą</b> (prasideda <code>sk-ant-</code>). Jis rodomas tik vieną kartą.</li>
+    <li>Islet: <span class="path">Chat provider</span> pasirinkite <b>Anthropic API</b>.</li>
+    <li>Atidarykite <b>Chat</b> skirtuką, paspauskite įvesties lauką, įklijuokite raktą (<kbd>Ctrl</kbd>+<kbd>V</kbd>) ir spauskite <kbd>Enter</kbd>. Raktas saugomas užšifruotas, tik jūsų Windows vartotojui.</li>
+  </ol>
+  <ul>
+    <li><span class="path">Chat model</span> tuščias reiškia numatytąjį <code>claude-opus-5-5</code>. Pigiau ir greičiau: <code>claude-sonnet-5-5</code> arba <code>claude-haiku-5-5</code>.</li>
+    <li>Raktą pakeisti: Chat lauke parašykite <code>/key</code> ir <kbd>Enter</kbd>, tada įklijuokite naują.</li>
+    <li>Jei raktas jau įrašytas sistemoje kaip <code>ANTHROPIC_API_KEY</code>, Islet jį pasiims pats (žr. <a href="#kintamieji">Raktai sistemoje</a>).</li>
+  </ul>
+</div>
+
+<h3>C. OpenAI arba OpenRouter <span class="tag pay">Mokama pagal naudojimą</span></h3>
+<div class="card">
+  <ol>
+    <li><b>OpenAI:</b> <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a>, tada <i>Create new secret key</i> (prasideda <code>sk-</code>). Kreditą įneškite <span class="path">Billing</span> skiltyje.<br>
+        <b>OpenRouter</b> (daug skirtingų modelių su vienu raktu): <a href="https://openrouter.ai/keys">openrouter.ai/keys</a>.</li>
+    <li>Islet: <span class="path">Chat provider</span> pasirinkite <b>OpenAI-compatible</b>.</li>
+    <li><span class="path">OpenAI-compatible address</span>:
+      <ul>
+        <li>OpenAI: <code>https://api.openai.com/v1</code></li>
+        <li>OpenRouter: <code>https://openrouter.ai/api/v1</code></li>
+      </ul></li>
+    <li><span class="path">Chat model</span> <b>būtinas</b>: įrašykite modelio pavadinimą tiksliai taip, kaip jis parašytas paslaugos modelių sąraše (<a href="https://platform.openai.com/docs/models">OpenAI modeliai</a>, <a href="https://openrouter.ai/models">OpenRouter modeliai</a>).</li>
+    <li>Chat skirtuke įklijuokite raktą ir spauskite <kbd>Enter</kbd> (arba naudokite <code>OPENAI_API_KEY</code>).</li>
+  </ol>
+</div>
+
+<h3>D. Nemokamas modelis jūsų kompiuteryje <span class="tag ok">Nemokama, be interneto</span></h3>
+<div class="card">
+  <p>Jei turite galingą vaizdo plokštę, modelį galite paleisti pas save. Tada niekas neišeina iš kompiuterio. Atsakymų kokybė priklauso nuo modelio dydžio.</p>
+  <ol>
+    <li>Įdiekite <a href="https://ollama.com/download">Ollama</a> arba <a href="https://lmstudio.ai">LM Studio</a>.</li>
+    <li>Atsisiųskite modelį (Ollama: komandų eilutėje <code>ollama pull &lt;modelio-pavadinimas&gt;</code>; pavadinimus rasite <a href="https://ollama.com/library">ollama.com/library</a>. LM Studio tą patį leidžia padaryti programos lange).</li>
+    <li>Islet: <span class="path">Chat provider</span> <b>OpenAI-compatible</b>, adresas:
+      <ul>
+        <li>Ollama: <code>http://localhost:11434/v1</code></li>
+        <li>LM Studio: <code>http://localhost:1234/v1</code> (įjunkite jo <i>Local Server</i>)</li>
+      </ul></li>
+    <li><span class="path">Chat model</span>: tas pats pavadinimas, kurį atsisiuntėte.</li>
+    <li>Chat skirtukas paprašys rakto: įrašykite bet ką (pvz. <code>local</code>). Vietiniams serveriams raktas nereikalingas.</li>
+  </ol>
+</div>
+
+<h2 id="balsas">Balsas į tekstą</h2>
+<div class="card">
+  <p>Paspauskite <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (kombinaciją galima pakeisti <span class="path">Settings › Shortcuts</span>), kalbėkite, ir tekstas bus įrašytas ten, kur mirksi žymeklis. Dar kartą paspaudus įrašymas baigiamas.</p>
+  <table>
+    <tr><th>Pasirinkimas</th><th>Kaip veikia</th><th>Ko reikia</th></tr>
+    <tr><td><b>On this PC</b></td><td>Windows kalbos atpažinimas, be interneto, nemokamai.</td><td>Nieko. Šiame kompiuteryje veikia <b>tik anglų kalba</b>.</td></tr>
+    <tr><td><b>Online</b></td><td>Įrašas siunčiamas transkribavimo paslaugai. Supranta ir lietuviškai.</td><td>OpenAI raktas (<a href="#chat">C būdas</a>) arba <code>OPENAI_API_KEY</code>.</td></tr>
+  </table>
+  <p>Lietuvių kalbai „Online“ režime <span class="path">Voice language (online)</span> įrašykite <code>lt</code> (tuščias laukas: kalbą atpažįsta pats). Numatytoji paslauga: OpenAI, modelis <code>whisper-1</code> (keičiama nustatymų faile: <code>voice_url</code>, <code>voice_model</code>).</p>
+  <p class="note card" style="margin:10px 0 0">Jei pokalbiui naudojate <b>Claude login</b> arba <b>Anthropic API</b>, balsui „Online“ vis tiek reikia <b>OpenAI</b> rakto: Anthropic kalbos atpažinimo paslaugos neturi. Lengviausia jį įrašyti kaip <code>OPENAI_API_KEY</code> (<a href="#kintamieji">kaip</a>).</p>
+</div>
+
+<h2 id="orai">Orai</h2>
+<div class="card">
+  <ol>
+    <li><span class="path">Settings › Network › Weather</span>: įjunkite.</li>
+    <li><span class="path">City</span>: įrašykite miestą (pvz. <code>Vilnius</code>, <code>Kaunas</code>) ir spauskite <kbd>Enter</kbd>.</li>
+    <li>Po kelių sekundžių temperatūra atsiras saloje, o prognozė – <b>Weather</b> skirtuke. Atnaujinama kas 30 minučių.</li>
+  </ol>
+  <p>Duomenys iš <a href="https://open-meteo.com">open-meteo.com</a>: nemokamai, be paskyros.</p>
+</div>
+
+<h2 id="valiutos">Valiutų skaičiuoklė</h2>
+<div class="card">
+  <ol>
+    <li><span class="path">Settings › Network › Currency conversion</span>: įjunkite.</li>
+    <li><span class="path">Your currency</span>: jūsų valiuta (pvz. <code>EUR</code>).</li>
+    <li>Atidarykite komandų juostą (<kbd>Alt</kbd>+<kbd>Space</kbd>) ir rašykite, pvz.: <code>100 usd to eur</code>, <code>50 £</code>, <code>20 eurų į dolerius</code>, <code>1,5k pounds</code>. <kbd>Enter</kbd> nukopijuoja rezultatą.</li>
+  </ol>
+  <p>Kursai iš Europos centrinio banko (per frankfurter.dev), atnaujinami kartą per dieną.</p>
+</div>
+
+<h2 id="kintamieji">Raktai sistemoje (aplinkos kintamieji)</h2>
+<div class="card tip">
+  <p>Jei API raktą įrašysite į Windows, Islet (ir kitos programos) jį ras pačios. Tada jo nereikia klijuoti Chat skirtuke.</p>
+  <ol>
+    <li>Paspauskite <kbd>Win</kbd>, įrašykite <b>„environment variables“</b> ir pasirinkite <i>Edit environment variables for your account</i> (lietuviškoje Windows: <i>Redaguoti savo paskyros aplinkos kintamuosius</i>).</li>
+    <li>Viršutinėje dalyje spauskite <b>New…</b></li>
+    <li>Pavadinimas: <code>ANTHROPIC_API_KEY</code> arba <code>OPENAI_API_KEY</code>. Reikšmė: jūsų raktas. Spauskite OK.</li>
+    <li>Išjunkite Islet (dėklo ikona › <i>Quit</i>) ir vėl paleiskite: naujus kintamuosius programa mato tik paleista iš naujo.</li>
+  </ol>
+  <p>Raktas, įklijuotas Chat skirtuke, turi pirmenybę prieš kintamąjį.</p>
+</div>
+
+<h2 id="atnaujinimai">Atnaujinimų tikrinimas</h2>
+<div class="card">
+  <p>Kol Islet niekur nepaskelbtas, šis nustatymas nieko neras: palikite išjungtą. Kai turėsite GitHub saugyklą su leidimais, įrašykite <code>https://api.github.com/repos/&lt;vartotojas&gt;/&lt;saugykla&gt;/releases/latest</code> ir įjunkite. Islet kartą per dieną praneš apie naują versiją, bet pats nieko nesiųs.</p>
+</div>
+
+<h2 id="privatumas">Kas kur siunčiama</h2>
+<table>
+  <tr><th>Funkcija</th><th>Kur</th><th>Kas siunčiama</th></tr>
+  <tr><td>Orai</td><td>open-meteo.com</td><td>Miesto pavadinimas (vieną kartą), vėliau tik koordinatės.</td></tr>
+  <tr><td>Valiutos</td><td>frankfurter.dev</td><td>Tik užklausa kursams. Ką skaičiuojate, neišsiunčiama.</td></tr>
+  <tr><td>AI pokalbis</td><td>Pasirinktas tiekėjas</td><td>Paskutinės 40 žinučių ir prisegti failai.</td></tr>
+  <tr><td>Balsas „Online“</td><td>Transkribavimo paslauga</td><td>Garso įrašas.</td></tr>
+  <tr><td>Visa kita</td><td>Niekur</td><td>Iškarpinė, užrašai, failai, pokalbių istorija lieka kompiuteryje (užšifruoti).</td></tr>
+</table>
+
+<h2 id="problemos">Jei kas neveikia</h2>
+<table>
+  <tr><th>Pranešimas</th><th>Ką daryti</th></tr>
+  <tr><td>„Not signed in to Claude yet“</td><td>Settings › Network › Claude login › <b>Sign in</b>, ir užbaikite prisijungimą naršyklėje.</td></tr>
+  <tr><td>„Claude app not found“</td><td>Įdiekite Claude programą (<a href="https://claude.ai/download">claude.ai/download</a>) arba pasirinkite kitą tiekėją.</td></tr>
+  <tr><td>„Not signed in to ChatGPT yet“</td><td>Settings › Network › ChatGPT login › <b>Sign in</b>.</td></tr>
+  <tr><td>„Codex app not found“</td><td>Įdiekite OpenAI Codex programą arba pasirinkite kitą tiekėją.</td></tr>
+  <tr><td>„usage limit was reached“</td><td>Pasiektas jūsų Claude plano limitas. Palaukite, kol jis atsinaujins, arba naudokite API raktą.</td></tr>
+  <tr><td>„The API key was not accepted“</td><td>Chat lauke <code>/key</code>, tada įklijuokite teisingą raktą. Patikrinkite, ar pasirinktas tinkamas tiekėjas.</td></tr>
+  <tr><td>„rate limiting or out of credit“</td><td>Baigėsi kreditas (Billing) arba per daug užklausų iš eilės. Palaukite minutę.</td></tr>
+  <tr><td>„Set chat_model…“</td><td>OpenAI-compatible tiekėjui įrašykite modelio pavadinimą <span class="path">Chat model</span> lauke.</td></tr>
+  <tr><td>Vietinis modelis neatsako</td><td>Patikrinkite, ar veikia Ollama / LM Studio serveris ir ar adresas su <code>/v1</code> gale.</td></tr>
+  <tr><td>Orai nerodomi</td><td>Patikrinkite miesto pavadinimą (be klaidų, pvz. <code>Vilnius</code>) ir interneto ryšį.</td></tr>
+</table>
+<p style="color:var(--muted);margin-top:30px">Šis failas sukurtas Islet ir gali būti perrašytas kiekvieną kartą atidarant gidą iš nustatymų.</p>
+</main>
+</body>
+</html>

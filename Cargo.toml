@@ -1,0 +1,112 @@
+[package]
+name = "islet"
+version = "0.1.0"
+edition = "2021"
+description = "A liquid island overlay for Windows 11"
+license = "MIT"
+repository = "https://github.com/begaris/islet"
+build = "build.rs"
+
+[dependencies]
+windows-numerics = "0.3"
+# Needed by name for the `#[interface]` macro (already a dependency of `windows`).
+windows-core = "0.62"
+# QR decoding for the "QR code" quick action (without its `image` crate support).
+rqrr = { version = "0.11", default-features = false }
+# Inflates the zipped XML inside .docx / .xlsx / .pptx chat attachments.
+miniz_oxide = "0.9"
+
+[dev-dependencies]
+# Draws the QR code the decoder test reads.
+qrcode = { version = "0.14", default-features = false }
+
+[dependencies.windows]
+version = "0.62"
+features = [
+    "Foundation",
+    "Graphics_Imaging",
+    "Media_Control",
+    "Media_Ocr",
+    "Data_Pdf",
+    "Graphics_Capture",
+    "Graphics_DirectX",
+    "Graphics_DirectX_Direct3D11",
+    "Security_Authorization_AppCapabilityAccess",
+    "Win32_Media_MediaFoundation",
+    "Win32_Media_Speech",
+    "Win32_System_WinRT",
+    "Win32_System_WinRT_Direct3D11",
+    "Win32_System_WinRT_Graphics_Capture",
+    "Globalization",
+    "Storage_Streams",
+    "Win32_Devices_FunctionDiscovery",
+    "Win32_Media_Audio",
+    "Win32_Media_Audio_Endpoints",
+    "Win32_Media_KernelStreaming",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Variant",
+    "Win32_System_Time",
+    "Win32_System_Power",
+    "Win32_System_Shutdown",
+    "Win32_Security_Cryptography",
+    "Devices_Radios",
+    "Win32_System_Pipes",
+    "Win32_System_Console",
+    "Win32_Security_Authorization",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_IO",
+    "Win32_System_DataExchange",
+    "Win32_Storage_FileSystem",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_NetworkManagement_Ndis",
+    "Win32_NetworkManagement_Rras",
+    "Win32_Networking_WinSock",
+    "Win32_Networking_WinHttp",
+    "Win32_Globalization",
+    "UI_Notifications_Management",
+    "UI_Notifications",
+    "ApplicationModel",
+    "Foundation_Collections",
+    "Win32_UI_Shell_PropertiesSystem",
+    "Win32_UI_Shell_Common",
+    "Win32_System_Ole",
+    "Win32_System_SystemServices",
+    "Win32_Graphics_Imaging",
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Graphics_Direct2D",
+    "Win32_Graphics_Direct2D_Common",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_DirectComposition",
+    "Win32_Graphics_DirectWrite",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_System_Com",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Registry",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_UI_Accessibility",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[build-dependencies]
+embed-manifest = "1.5"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+panic = "abort"
